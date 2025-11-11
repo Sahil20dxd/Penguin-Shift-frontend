@@ -18,7 +18,7 @@ export default function VerifyEmailPage() {
     ;(async () => {
       try {
         const res = await fetch(
-          `http://127.0.0.1:8080/auth/verify?token=${encodeURIComponent(token)}`,
+          `https://penguinshift-production.up.railway.app/auth/verify?token=${encodeURIComponent(token)}`,
           {
             method: 'GET',
             redirect: 'follow',

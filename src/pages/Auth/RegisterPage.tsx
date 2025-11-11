@@ -18,7 +18,7 @@ import {
 } from '@/utils/security/turnstile'
 
 const API_BASE =
-  (import.meta as any)?.env?.VITE_API_BASE || 'http://127.0.0.1:8080'
+  (import.meta as any)?.env?.VITE_API_BASE || 'https://penguinshift-production.up.railway.app'
 const TURNSTILE_SITE_KEY =
   (import.meta as any)?.env?.VITE_TURNSTILE_SITE_KEY || ''
 

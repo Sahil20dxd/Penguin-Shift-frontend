@@ -271,7 +271,7 @@ export default function SelectPlaylist() {
 
       const res = await fetch(
         `${
-          (import.meta as any)?.env?.VITE_API_BASE || "http://127.0.0.1:8080"
+          (import.meta as any)?.env?.VITE_API_BASE || "https://penguinshift-production.up.railway.app"
         }/api/platforms/force-reconnect/${localPlatform}`,
         {
           method: "POST",

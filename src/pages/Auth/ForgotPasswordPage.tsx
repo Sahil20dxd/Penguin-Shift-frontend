@@ -23,7 +23,7 @@ export default function ForgotPasswordPage() {
 
     setIsLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:8080/auth/forgot-password", {
+      const res = await fetch("https://penguinshift-production.up.railway.app/auth/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

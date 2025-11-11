@@ -37,7 +37,7 @@ type MeResponse = {
   authProvider?: 'LOCAL' | 'GOOGLE'
 }
 
-const API_BASE = 'http://127.0.0.1:8080'
+const API_BASE = 'https://penguinshift-production.up.railway.app/'
 
 export default function AccountSettings() {
   const { user, authFetch, logout } = useAuth()
