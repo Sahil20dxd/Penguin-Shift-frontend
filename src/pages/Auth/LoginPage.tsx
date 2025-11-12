@@ -32,13 +32,11 @@ export default function LoginPage() {
 
   // Turnstile mount effect
   useEffect(() => {
-    let active = true;
+    let mounted = true;
     (async () => {
-      if (!TURNSTILE_SITE_KEY) return;
       try {
         await loadTurnstile();
-        if (!active) return;
-        await renderTurnstile("captcha-login"); // <-- only container id
+        if (mounted) await renderTurnstile("captcha-login");
       } catch {
         showToast(
           "We couldn’t load the verification widget. Please refresh the page.",
@@ -47,7 +45,7 @@ export default function LoginPage() {
       }
     })();
     return () => {
-      active = false;
+      mounted = false;
       resetTurnstile();
     };
   }, [showToast]);
@@ -101,7 +99,12 @@ export default function LoginPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ identifier, password, remember, captchaToken }),
+        body: JSON.stringify({
+          username: identifier,
+          password,
+          rememberMe: remember,
+          captchaToken,
+        }),
       });
 
       let data: any = null;

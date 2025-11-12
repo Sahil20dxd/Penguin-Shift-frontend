@@ -1,8 +1,13 @@
-// public/_redirects
+# API -> Railway
 /api/* https://penguinshift-production.up.railway.app/api/:splat 200
+/api/platforms/* https://penguinshift-production.up.railway.app/api/platforms/:splat 200
+/actuator/* https://penguinshift-production.up.railway.app/actuator/:splat 200
+
+# Spring Security OAuth endpoints -> Railway
 /login/oauth2/code/* https://penguinshift-production.up.railway.app/login/oauth2/code/:splat 200
 /oauth2/authorization/* https://penguinshift-production.up.railway.app/oauth2/authorization/:splat 200
 /oauth/* https://penguinshift-production.up.railway.app/oauth/:splat 200
-/api/platforms/* https://penguinshift-production.up.railway.app/api/platforms/:splat 200
-/actuator/* https://penguinshift-production.up.railway.app/actuator/:splat 200
+
+# IMPORTANT: do NOT proxy /auth/* — it's your SPA route
+# Catch-all SPA fallback (must be last)
 /* /index.html 200
