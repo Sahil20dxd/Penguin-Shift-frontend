@@ -16,7 +16,8 @@ import {
 } from "@/utils/security/turnstile";
 
 const API_BASE =
-  (import.meta as any)?.env?.VITE_API_BASE || "https://penguinshift-production.up.railway.app";
+  (import.meta as any)?.env?.VITE_API_BASE ||
+  "https://penguinshift-production.up.railway.app";
 const TURNSTILE_SITE_KEY =
   (import.meta as any)?.env?.VITE_TURNSTILE_SITE_KEY || "";
 
@@ -29,7 +30,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Mount Turnstile
+  // Turnstile mount effect
   useEffect(() => {
     let active = true;
     (async () => {
@@ -37,7 +38,7 @@ export default function LoginPage() {
       try {
         await loadTurnstile();
         if (!active) return;
-        await renderTurnstile("captcha-login", TURNSTILE_SITE_KEY);
+        await renderTurnstile("captcha-login"); // <-- only container id
       } catch {
         showToast(
           "We couldn’t load the verification widget. Please refresh the page.",
@@ -85,6 +86,7 @@ export default function LoginPage() {
       return;
     }
 
+    // still in src/pages/Auth/LoginPage.tsx inside handleLogin
     let captchaToken: string | null = "TEST_PASS";
     if (TURNSTILE_SITE_KEY) {
       captchaToken = getTurnstileToken();
