@@ -1,0 +1,10 @@
+// public/_redirects
+
+/api/* https://penguinshift-production.up.railway.app/api/:splat 200
+/login/oauth2/code/* https://penguinshift-production.up.railway.app/login/oauth2/code/:splat 200
+/oauth2/authorization/* https://penguinshift-production.up.railway.app/oauth2/authorization/:splat 200
+/oauth/* https://penguinshift-production.up.railway.app/oauth/:splat 200
+/auth/* https://penguinshift-production.up.railway.app/auth/:splat 200
+/api/platforms/* https://penguinshift-production.up.railway.app/api/platforms/:splat 200
+/actuator/* https://penguinshift-production.up.railway.app/actuator/:splat 200
+/* /index.html 200
