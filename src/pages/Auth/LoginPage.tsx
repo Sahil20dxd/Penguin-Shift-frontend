@@ -272,10 +272,10 @@ export default function LoginPage() {
 
         <a
           href={`${API_BASE}/oauth2/authorization/google`}
-          onClick={() => {
-            document.cookie =
-              "PS_OAUTH_INTENT=login; Path=/; Max-Age=300; SameSite=Lax";
-          }}
+          onClick={() =>
+            (document.cookie =
+              "PS_OAUTH_INTENT=login; Path=/; Max-Age=300; SameSite=Lax")
+          }
           // rel="noopener"  // not strictly needed since same tab, ok to omit
           className="mt-3 block w-full text-center border border-gray-300 bg-white text-gray-700 font-medium py-2 rounded-md hover:bg-gray-50"
         >
