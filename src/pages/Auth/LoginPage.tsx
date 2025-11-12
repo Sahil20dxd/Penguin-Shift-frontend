@@ -31,12 +31,19 @@ export default function LoginPage() {
   const location = useLocation();
 
   // Turnstile mount effect
+  // Turnstile mount effect (run once)
   useEffect(() => {
     let mounted = true;
     (async () => {
       try {
         await loadTurnstile();
-        if (mounted) await renderTurnstile("captcha-login");
+        if (mounted) {
+          // render only if not already present
+          const host = document.getElementById("captcha-login");
+          if (host && host.childElementCount === 0) {
+            await renderTurnstile("captcha-login");
+          }
+        }
       } catch {
         showToast(
           "We couldn’t load the verification widget. Please refresh the page.",
@@ -48,7 +55,9 @@ export default function LoginPage() {
       mounted = false;
       resetTurnstile();
     };
-  }, [showToast]);
+    // IMPORTANT: empty deps so this runs once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Handle OAuth redirect messages
   useEffect(() => {
