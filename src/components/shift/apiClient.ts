@@ -8,7 +8,7 @@ const API_BASE =
   (typeof import.meta !== 'undefined' &&
     (import.meta as any).env?.VITE_API_BASE) ||
   (process.env as any)?.REACT_APP_API_URL ||
-  'https://penguinshift-production.up.railway.app/'
+  'https://penguinshift-production.up.railway.app'
 
 function getAuthToken(): string {
   return localStorage.getItem('authToken') || localStorage.getItem('jwt') || ''

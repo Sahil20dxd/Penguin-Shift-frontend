@@ -7,7 +7,7 @@ import React, {
   type ReactNode,
 } from "react";
 
-const API_BASE = "https://penguinshift-production.up.railway.app/";
+const API_BASE = "https://penguinshift-production.up.railway.app";
 
 export interface User {
   name: string;

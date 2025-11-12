@@ -13,7 +13,7 @@ import ResendVerificationPage from "../ResendVerificationPage";
 import { useAuth } from "@/context/useAuth";
 import { useNavigate, Navigate, useLocation } from "react-router-dom";
 
-const API_BASE = "https://penguinshift-production.up.railway.app/";
+const API_BASE = "https://penguinshift-production.up.railway.app";
 
 export default function AuthRouter() {
   const { isAuthenticated, loading, login } = useAuth();
