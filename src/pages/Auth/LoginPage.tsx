@@ -100,6 +100,8 @@ export default function LoginPage() {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
+          // send both; backend can use whichever it binds
+          email: identifier,
           username: identifier,
           password,
           rememberMe: remember,
@@ -216,6 +218,8 @@ export default function LoginPage() {
         </label>
         <input
           type="text"
+          name="username" // important for browser hints
+          autoComplete="username" // ✅
           required
           value={identifier}
           onChange={(e) => setIdentifier(e.target.value)}
@@ -227,13 +231,14 @@ export default function LoginPage() {
         <label className="block text-sm font-medium mb-1">Password</label>
         <input
           type="password"
+          name="password"
+          autoComplete="current-password" // ✅
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter your password"
           className="mb-4 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-purple-500 outline-none"
         />
-
         {/* Remember me */}
         <label className="inline-flex items-center mb-4">
           <input
@@ -256,18 +261,17 @@ export default function LoginPage() {
           Login
         </Button>
 
-        {/* Google login */}
-        <Button
-          type="button"
+        <a
+          href={`${API_BASE}/oauth2/authorization/google`}
           onClick={() => {
             document.cookie =
               "PS_OAUTH_INTENT=login; Path=/; Max-Age=300; SameSite=Lax";
-            window.location.assign(`${API_BASE}/oauth2/authorization/google`);
           }}
-          className="mt-3 w-full border border-gray-300 bg-white text-gray-700 font-medium py-2 rounded-md hover:bg-gray-50"
+          // rel="noopener"  // not strictly needed since same tab, ok to omit
+          className="mt-3 block w-full text-center border border-gray-300 bg-white text-gray-700 font-medium py-2 rounded-md hover:bg-gray-50"
         >
           Login with Google
-        </Button>
+        </a>
 
         {/* Links */}
         <div className="mt-4 text-sm text-center text-gray-600">
